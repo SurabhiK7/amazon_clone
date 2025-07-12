@@ -130,7 +130,7 @@ const openSignInModal = () => {
               }
             }}
           >
-            <span>{user ? `Hello, ${user.username}` : 'Hello, sign in'}</span>
+            <span>{user ? 'Hello, ${user.username}' : 'Hello, sign in'}</span>
             <strong>Account & Lists {accountDropdownOpen ? '▴' : '▾'}</strong>
           </div>
 
