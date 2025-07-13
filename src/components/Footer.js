@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './Footer.css';
 import { FaInstagram, FaLinkedin, FaTwitter, FaFacebook, FaArrowUp } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 function Footer() {
+  const { t } = useTranslation();
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
@@ -20,7 +22,7 @@ function Footer() {
   return (
     <>
       {showButton && (
-        <button className="back-to-top" onClick={scrollToTop} title="Back to Top">
+        <button className="back-to-top" onClick={scrollToTop} title={t("backToTop")}>
           <FaArrowUp />
         </button>
       )}
@@ -28,15 +30,16 @@ function Footer() {
       <footer className="site-footer">
         <div className="footer-container">
           <div className="footer-section about">
-            <h3>About</h3>
+            <h3>{t("aboutTitle")}</h3>
             <p>
-              This e-commerce website is a demo project created by <strong>Surabhi K</strong> from <br />
-              <strong>VIDYAVARDHAKA COLLEGE OF ENGINEERING</strong>,<br /> Dept of <strong>Information Science Engineering</strong>.
+              {t("aboutDescription")} <strong>Surabhi K</strong> <br />
+              <strong>{t("collegeName")}</strong>,<br />
+              {t("departmentFull")}
             </p>
           </div>
 
           <div className="footer-section links">
-            <h3>Connect with Us</h3>
+            <h3>{t("connectWithUs")}</h3>
             <ul>
               <li><a href="https://www.instagram.com/">Instagram</a></li>
               <li><a href="https://www.linkedin.com/">LinkedIn</a></li>
@@ -52,15 +55,15 @@ function Footer() {
           </div>
 
           <div className="footer-section contact">
-            <h3>Contact</h3>
-            <p>Surabhi K</p>
-            <p>ISE</p>
-            <p>VVCE, Mysuru, India</p>
+            <h3>{t("contact")}</h3>
+            <p>{t("Surabhi")}</p>
+            <p>{t("department")}</p>
+            <p>{t("college")}</p>
             <p>surabhiksonu2004@gmail.com</p>
           </div>
         </div>
         <div className="footer-bottom">
-          © 2025 Surabhi K | All rights reserved.
+          © 2025 Surabhi K | {t("allRightsReserved")}
         </div>
       </footer>
     </>

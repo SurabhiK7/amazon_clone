@@ -85,16 +85,16 @@ function Navbar() {
           </button>
 
           <a href="/" className="logo-link">
-            <img src={logo} className="logo" alt="Amazon Logo" />
+            <img src={logo} className="logo" alt={t("Amazon Logo")} />
           </a>
+
           <div className="location-block">
-            <img src={locationIcon} className="location-icon" alt="location" />
+            <img src={locationIcon} className="location-icon" alt={t("Location")} />
             <div className="location-text">
-              <span className="small-text">{t("Delivering_to")}</span>
+              <span className="small-text">{t("deliveringTo")}</span>
               <span className="update-location">{location}</span>
             </div>
           </div>
-          
         </div>
 
         <div className={`nav-content ${menuOpen ? 'open' : ''}`}>
@@ -113,14 +113,14 @@ function Navbar() {
               className="form-control"
               placeholder={t('search')}
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value) &&setMenuOpen(false)}
+              onChange={(e) => setSearchTerm(e.target.value) && setMenuOpen(false)}
             />
             <button onClick={() => setMenuOpen(false)}><FaSearch /></button>
           </div><br /><br />
 
           <div className="price-filter">
             <label htmlFor="priceRange" className="form-label">
-              {t('Max_Price')}: ₹{maxPrice}
+              {t('maxPrice')}: ₹{maxPrice}
             </label>
             <input
               type="range"
@@ -130,7 +130,7 @@ function Navbar() {
               max="50000"
               step="100"
               value={maxPrice}
-              onChange={(e) => setMaxPrice(Number(e.target.value))&&setMenuOpen(false) }
+              onChange={(e) => setMaxPrice(Number(e.target.value)) && setMenuOpen(false)}
             />
           </div>
 
@@ -155,7 +155,7 @@ function Navbar() {
                 }
               }}
             >
-              <span>{user ? `${t('hello')}, ${user.username}` : t('Hello,SignIn')}</span><br />
+              <span>{user ? `${t('hello')}, ${user.username}` : t('helloSignIn')}</span><br />
               <strong>{t('accountLists')} {accountDropdownOpen ? '▴' : '▾'}</strong>
             </div>
 
@@ -186,7 +186,7 @@ function Navbar() {
           </Link>
 
           <button onClick={toggleTheme} className="btn btn-sm btn-outline-secondary">
-            {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
+            {theme === 'light' ? t('darkMode') : t('lightMode')}
           </button>
 
           {showLocationModal && (
@@ -197,13 +197,10 @@ function Navbar() {
           )}
         </div>
       </div>
-      {menuOpen && (
-  <div
-    className="menu-backdrop"
-    onClick={() => setMenuOpen(false)}
-  ></div>
-)}
 
+      {menuOpen && (
+        <div className="menu-backdrop" onClick={() => setMenuOpen(false)}></div>
+      )}
     </header>
   );
 }
