@@ -83,6 +83,7 @@ function Navbar() {
           <button className="mobile-menu-toggle" onClick={() => setMenuOpen(prev => !prev)}>
             ☰
           </button>
+
           <a href="/" className="logo-link">
             <img src={logo} className="logo" alt="Amazon Logo" />
           </a>
@@ -93,6 +94,7 @@ function Navbar() {
               <span className="update-location">{location}</span>
             </div>
           </div>
+          
         </div>
 
         <div className={`nav-content ${menuOpen ? 'open' : ''}`}>
@@ -153,7 +155,7 @@ function Navbar() {
                 }
               }}
             >
-              <span>{user ? `${t('hello')}, ${user.username}` : t('helloSignIn')}</span><br />
+              <span>{user ? `${t('hello')}, ${user.username}` : t('Hello,SignIn')}</span><br />
               <strong>{t('accountLists')} {accountDropdownOpen ? '▴' : '▾'}</strong>
             </div>
 
@@ -184,7 +186,7 @@ function Navbar() {
           </Link>
 
           <button onClick={toggleTheme} className="btn btn-sm btn-outline-secondary">
-            {theme === 'light' ? '🌙' : '☀️'}
+            {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
           </button>
 
           {showLocationModal && (
@@ -195,6 +197,13 @@ function Navbar() {
           )}
         </div>
       </div>
+      {menuOpen && (
+  <div
+    className="menu-backdrop"
+    onClick={() => setMenuOpen(false)}
+  ></div>
+)}
+
     </header>
   );
 }

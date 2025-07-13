@@ -33,6 +33,7 @@ const resources = {
 kn: {
   translation: {
     welcome: 'ಅಮೆಜಾನ್ ಕ್ಲೋನ್‌ಗೆ ಸ್ವಾಗತ',
+    All :'ಎಲ್ಲಾ ವರ್ಗಗಳ ',
     search: 'ಉತ್ಪನ್ನಗಳನ್ನು ಹುಡುಕಿ...',
     cart: 'ಕಾರ್ಟ್',
     signin: 'ಹಲೋ, ಸೈನ್ ಇನ್ ಮಾಡಿ',
