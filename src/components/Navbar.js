@@ -13,30 +13,29 @@ import { useTranslation } from 'react-i18next';
 import { CartContext } from '../context/CartContext';
 import { ThemeContext } from '../context/ThemeContext';
 import { useAuth } from '../context/AuthContext';
-
+import i18n from '../i18n';
 
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [accountDropdownOpen, setAccountDropdownOpen] = useState(false);
-  // eslint-disable-next-line no-unused-vars
   const [showSignInModal, setShowSignInModal] = useState(false);
-
   const [showLangDropdown, setShowLangDropdown] = useState(false);
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { cartCount } = useContext(CartContext);
-const { user, login, logout } = useAuth();
-const isLoggedIn = !!user;
+  const { user, login, logout } = useAuth();
+  const isLoggedIn = !!user;
 
-const handleSignOut = () => {
-  logout();
-  localStorage.removeItem('location');
-  setAccountDropdownOpen(false);
-  window.location.reload();
-};
+  const handleSignOut = () => {
+    logout();
+    localStorage.removeItem('location');
+    setAccountDropdownOpen(false);
+    window.location.reload();
+  };
 
-const openSignInModal = () => {
-  setShowSignInModal(true); 
-  setAccountDropdownOpen(false);
-};
+  const openSignInModal = () => {
+    setShowSignInModal(true);
+    setAccountDropdownOpen(false);
+  };
 
   const { t } = useTranslation();
   const {
@@ -48,15 +47,12 @@ const openSignInModal = () => {
   const [showLocationModal, setShowLocationModal] = useState(false);
   const [location, setLocation] = useState(localStorage.getItem('location') || 'Bengaluru 562130');
 
-  const categories = ['All Categories', ...new Set(products.map(p => p.category))];
-
   const handleApplyLocation = (newLocation, username) => {
     setLocation(newLocation);
     localStorage.setItem('location', newLocation);
-    if (username) login(username); // triggers AuthContext to update user
+    if (username) login(username);
   };
 
-  // Close account dropdown on outside click
   const dropdownRef = useRef();
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -68,112 +64,137 @@ const openSignInModal = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const categories = [t('All Categories'), ...new Set(products.map(p => p.category))];
+
   return (
     <header className="amazon-header fixed-top">
       <div className="nav-top">
-        <Link to="/"><img src={logo} alt="Amazon" className="logo" /></Link>
-
-        <div className="location" onClick={() => setShowLocationModal(true)}>
-          <img src={locationIcon} alt="Location" className="location-icon" />
-          <div className="location-text">
-            <span className="small-text">{t('Delivering to')}</span>
-            <strong className="update-location">{location}</strong>
+        <div className="left-block">
+          <button className="mobile-menu-toggle" onClick={() => setMenuOpen(prev => !prev)}>
+            ☰
+          </button>
+          <a href="/" className="logo-link">
+            <img src={logo} className="logo" alt="Amazon Logo" />
+          </a>
+          <div className="location-block">
+            <img src={locationIcon} className="location-icon" alt="location" />
+            <div className="location-text">
+              <span className="small-text">{t('Delivering to')}</span>
+              <span className="update-location">{location}</span>
+            </div>
           </div>
         </div>
 
-        <div className="search-bar">
-          <select className="category-select" value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
-            {categories.map((cat, idx) => <option key={idx} value={cat}>{cat}</option>)}
-          </select>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search products..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <button><FaSearch /></button>
-        </div>
+        <div className={`nav-content ${menuOpen ? 'open' : ''}`}>
+          <div className="search-bar">
+            <select
+              className="category-select"
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+            >
+              {categories.map((cat, idx) => (
+                <option key={idx} value={cat}>{cat}</option>
+              ))}
+            </select>
+            <input
+              type="text"
+              className="form-control"
+              placeholder={t('search')}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button><FaSearch /></button>
+          </div><br /><br />
 
-        <div className="price-filter">
-          <label htmlFor="priceRange" className="form-label">{t('Max Price: ')}₹{maxPrice}</label>
-          <input
-            type="range"
-            id="priceRange"
-            className="form-range"
-            min="0"
-            max="50000"
-            step="100"
-            value={maxPrice}
-            onChange={(e) => setMaxPrice(Number(e.target.value))}
-          />
-        </div>
+          <div className="price-filter">
+            <label htmlFor="priceRange" className="form-label">
+              {t('Max Price')}: ₹{maxPrice}
+            </label>
+            <input
+              type="range"
+              id="priceRange"
+              className="form-range"
+              min="0"
+              max="50000"
+              step="100"
+              value={maxPrice}
+              onChange={(e) => setMaxPrice(Number(e.target.value))}
+            />
+          </div>
 
-        <div
-          className="lang-box"
-          onClick={() => setShowLangDropdown(prev => !prev)}
-          style={{ cursor: 'pointer', position: 'relative' }}
-        >
-          <img src={flag} alt="IN" />
-          <span>EN ▾</span>
-          <LanguageDropdown show={showLangDropdown} />
-        </div>
-
-        <div className="nav-option dropdown" ref={dropdownRef} style={{ position: 'relative' }}>
           <div
-            style={{ cursor: 'pointer' }}
-            onClick={() => {
-              if (user) {
-                setAccountDropdownOpen(prev => !prev);
-              } else {
-                setShowLocationModal(true); // Trigger sign-in modal
-              }
-            }}
+            className="lang-box"
+            onClick={() => setShowLangDropdown(prev => !prev)}
+            style={{ cursor: 'pointer', position: 'relative' }}
           >
-            <span>{user ? 'Hello, ${user.username}' : 'Hello, sign in'}</span>
-            <strong>Account & Lists {accountDropdownOpen ? '▴' : '▾'}</strong>
+            <img src={flag} alt="IN" />
+            <span>{i18n.language.toUpperCase()} ▾</span>
+            <LanguageDropdown show={showLangDropdown} />
           </div>
 
-{accountDropdownOpen && (
-  <div className="account-dropdown">
-    {isLoggedIn ? (
-      <button onClick={handleSignOut}>Sign Out</button>
-    ) : (
-      <button onClick={openSignInModal}>Sign In</button>
-    )}
-  </div>
-)}
+          <div className="nav-option dropdown" ref={dropdownRef} style={{ position: 'relative' }}>
+            <div
+              style={{ cursor: 'pointer' }}
+              onClick={() => {
+                if (user) {
+                  setAccountDropdownOpen(prev => !prev);
+                } else {
+                  setShowLocationModal(true);
+                }
+              }}
+            >
+              <span>{user ? `${t('hello')}, ${user.username}` : t('helloSignIn')}</span><br />
+              <strong>{t('accountLists')} {accountDropdownOpen ? '▴' : '▾'}</strong>
+            </div>
 
+            {accountDropdownOpen && (
+              <div className="account-dropdown">
+                {isLoggedIn ? (
+                  <button onClick={handleSignOut}>{t('signOut')}</button>
+                ) : (
+                  <button onClick={openSignInModal}>{t('signIn')}</button>
+                )}
+              </div>
+            )}
+          </div>
 
+          <Link to="/orders" className="nav-option">
+            <span>{t('returns')}</span>
+            <strong>{t('orders')}</strong>
+          </Link>
 
-        </div>
+          <Link to="/cart" className="cart position-relative">
+            <FaShoppingCart />
+            <span>{t('cart')}</span>
+            {cartCount > 0 && (
+              <span className="cart-count badge bg-warning text-dark position-absolute top-0 start-100 translate-middle">
+                {cartCount}
+              </span>
+            )}
+          </Link>
 
-        <Link to="/orders" className="nav-option">
-          <span>{t('Returns')}</span>
-          <strong>{t('& Orders')}</strong>
-        </Link>
+          <button onClick={toggleTheme} className="btn btn-sm btn-outline-secondary">
+            {theme === 'light' ? '🌙' : '☀️'}
+          </button>
 
-        <Link to="/cart" className="cart position-relative">
-          <FaShoppingCart />
-          <span>{t('Cart')}</span>
-          {cartCount > 0 && (
-            <span className="cart-count badge bg-warning text-dark position-absolute top-0 start-100 translate-middle">
-              {cartCount}
-            </span>
+          {showLocationModal && (
+            <LocationModal
+              onClose={() => setShowLocationModal(false)}
+              onApply={handleApplyLocation}
+            />
           )}
-        </Link>
-
-        <button onClick={toggleTheme} className="btn btn-sm btn-outline-secondary">
-          {theme === 'light' ? '🌙' : '☀️'}
-        </button>
+        </div>
       </div>
-
-      {showLocationModal && (
-        <LocationModal
-          onClose={() => setShowLocationModal(false)}
-          onApply={handleApplyLocation}
-        />
-      )}
     </header>
   );
 }

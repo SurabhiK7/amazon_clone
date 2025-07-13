@@ -15,7 +15,7 @@ function CheckoutPage() {
       id: Date.now(),
       items: cartItems,
       total,
-      date: new Date().toLocaleString(),
+      date: new Date().toISOString(),
     };
     placeOrder(newOrder);
     clearCart();

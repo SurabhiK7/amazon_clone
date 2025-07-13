@@ -1,23 +1,21 @@
-// LanguageDropdown.js
 import React from 'react';
-import './LanguageDropdown.css';
-import { useTranslation } from 'react-i18next';
-
+import i18n from '../i18n'; // import the configured i18n instance
+import './LanguageDropdown.css'
 const LanguageDropdown = ({ show }) => {
-  const { i18n } = useTranslation();
+  if (!show) return null; // hide dropdown if not toggled
 
-  if (!show) return null; // ⛔ don't render unless `show` is true
-
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
+  // Change language and persist selection
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang);
+    localStorage.setItem('language', lang); // Save selected language
   };
 
   return (
-    <div className="language-dropdown">
-      <button onClick={() => changeLanguage('en')}>English</button>
-      <button onClick={() => changeLanguage('hi')}>हिन्दी (Hindi)</button>
-      <button onClick={() => changeLanguage('kn')}>ಕನ್ನಡ (Kannada)</button>
-    </div>
+    <ul className="language-dropdown-menu">
+      <li onClick={() => changeLanguage('en')}>English</li>
+      <li onClick={() => changeLanguage('hi')}>हिंदी</li>
+      <li onClick={() => changeLanguage('kn')}>ಕನ್ನಡ</li>
+    </ul>
   );
 };
 

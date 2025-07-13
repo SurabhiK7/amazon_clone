@@ -1,38 +1,53 @@
+/* General Reset and Layout */
+body {
+  padding-top: 100px;
+}
+
 .amazon-header {
   background-color: #131921;
   padding: 10px 20px;
   color: white;
   display: flex;
   flex-direction: column;
-}
-
-body {
-  padding-top: 90px;
+  gap: 10px;
+  width: 100%;
 }
 
 .nav-top {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 10px;
+  background-color: #131921;
+  color: white;
+  flex-wrap: nowrap; /* Ensure elements don't wrap on desktop */
+}
+
+.left-block {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Reduce this from 10px or higher if present */
+  margin-right: 10px; /* optional: allows room before search bar */
 }
 
 .logo-link {
   display: flex;
   align-items: center;
-  margin-right: 10px;
+  margin-right: 5px; /* small gap if needed, else remove */
 }
 
 .logo {
   width: 100px;
   object-fit: contain;
+  margin: 0;
 }
 
+/* Location */
 .location-block {
   display: flex;
   align-items: center;
   color: white;
-  margin-right: 10px;
 }
 
 .location-icon {
@@ -59,6 +74,7 @@ body {
   cursor: pointer;
 }
 
+/* Search Bar */
 .search-bar {
   display: flex;
   flex: 1;
@@ -86,12 +102,13 @@ body {
   background-color: #febd69;
   border: none;
   padding: 0 12px;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
+/* Language Selector */
 .lang-box {
   display: flex;
   align-items: center;
@@ -101,11 +118,13 @@ body {
   position: relative;
   z-index: 1000;
 }
+
 .lang-box img {
   width: 24px;
   height: 16px;
 }
 
+/* Account, Orders, Cart Options */
 .nav-option {
   display: flex;
   flex-direction: column;
@@ -134,74 +153,43 @@ body {
   align-items: center;
   position: relative;
   padding: 0 10px;
+  margin-right: 15px;
 }
 
 .cart-icon {
   font-size: 22px;
-  margin-right: 5px;
 }
 
 .cart-text {
   font-weight: bold;
 }
 
-.cart {
-  position: relative;
-}
-
 .cart-count {
   font-size: 0.7rem;
-  padding: 2px 6px;
+  padding: 2px 10px;
   border-radius: 50%;
+  position: absolute;
+  top: -40px;
+  right: -25px;
+  background-color: #f08804;
+  color: white;
 }
 
-body.light {
-  background-color: #f0f2f2;
-  color: #000;
-}
-
-body.dark {
-  background-color: #1e1e1e;
-  color: #f0f0f0;
-}
-
-.navbar, .card, .accordion, .modal-content {
-  transition: background-color 0.3s, color 0.3s;
-}
-
-body.dark .navbar,
-body.dark .card,
-body.dark .accordion,
-body.dark .modal-content {
-  background-color: #2b2b2b !important;
-  color: #f0f0f0 !important;
-}
-
-.dropdown-menu {
+/* Dropdowns */
+.dropdown-menu,
+.account-dropdown {
   position: absolute;
   top: 100%;
   right: 0;
   background-color: white;
   border: 1px solid #ccc;
-  z-index: 999;
-  min-width: 150px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   padding: 10px;
+  z-index: 1000;
+  min-width: 150px;
   display: flex;
   flex-direction: column;
 }
-
-.account-dropdown {
-  position: absolute;
-  right: 0;
-  top: 100%;
-  background: white;
-  border: 1px solid #ccc;
-  padding: 10px;
-  z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
 
 .dropdown-item {
   background: none;
@@ -216,6 +204,94 @@ body.dark .modal-content {
   background-color: #f0f0f0;
 }
 
+/* Mobile Toggle Button */
+.mobile-menu-toggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: white;
+  display: block;
+  margin-right: 8px;
+}
+
+/* Navigation Items */
+.nav-items.hide {
+  display: none;
+}
+
+.nav-items.show {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Dark/Light Theme */
+body.light {
+  background-color: #f0f2f2;
+  color: #000;
+}
+
+body.dark {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+.navbar,
+.card,
+.accordion,
+.modal-content {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark .navbar,
+body.dark .card,
+body.dark .accordion,
+body.dark .modal-content {
+  background-color: #2b2b2b !important;
+  color: #f0f0f0 !important;
+}
+
+
+/* Shown when burger is toggled */
+.nav-content.open {
+  display: flex;
+}
+
+/* Default hidden for mobile menu */
+.nav-content {
+  display: none;
+  flex-direction: column;
+  background-color: #131921;
+  padding: 10px;
+  gap: 10px;
+  width: 100%;
+}
+
+/* Desktop override */
+@media (min-width: 768px) {
+  .nav-content {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    padding: 0;
+  }
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .mobile-menu-toggle {
+    display: none;
+  }
+
+  .nav-items {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+}
 
 @media (max-width: 768px) {
   .nav-top {
@@ -226,52 +302,22 @@ body.dark .modal-content {
 
   .search-bar {
     width: 100%;
-    min-width: unset;
     flex-direction: column;
   }
 
   .category-select,
   .search-bar input,
-  .search-bar button {
-    width: 100%;
-    margin-bottom: 5px;
-  }
-
-  .price-filter {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .location,
+  .search-bar button,
+  .price-filter,
+  .location-block,
   .lang-box,
   .nav-option,
   .cart,
   .btn-outline-secondary {
     width: 100%;
+    margin-bottom: 5px;
     text-align: left;
     padding-left: 5px;
-  }
-
-  .account-dropdown {
-    width: 100%;
-    position: relative;
-    top: 0;
-    right: 0;
-  }
-
-  .dropdown-menu {
-    position: relative;
-    top: 0;
-    right: 0;
-    width: 100%;
-  }
-
-  .cart-count {
-    top: 5px !important;
-    right: 10px !important;
-    transform: none !important;
   }
 
   .logo {
@@ -285,5 +331,19 @@ body.dark .modal-content {
 
   .btn-outline-secondary {
     margin-top: 10px;
+  }
+
+  .dropdown-menu,
+  .account-dropdown {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  .cart-count {
+    top: 5px !important;
+    right: 10px !important;
+    transform: none !important;
   }
 }

@@ -16,7 +16,7 @@ function ProductList() {
   return (
     <div className="row">
       {filteredProducts
-  .filter(product => product) // filter out undefined/null
+  .filter(product => product)
   .map(product => (
     <div className="col-md-3 mb-4" key={product.id}>
       <ProductCard product={product} />

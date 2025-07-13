@@ -10,10 +10,10 @@ const resources = {
       cart: 'Cart',
       signin: 'Hello, sign in',
       account: 'Account & Lists',
-      orders: 'Returns & Orders',
+      returns:'Returns',
+      orders: ' & Orders',
       apply: 'Apply',
       selectLanguage: 'Select Language',
-      // add more translations
     }
   },
   hi: {
@@ -23,7 +23,8 @@ const resources = {
       cart: 'कार्ट',
       signin: 'नमस्ते, साइन इन करें',
       account: 'खाता और सूचियाँ',
-      orders: 'रिटर्न और ऑर्डर',
+      returns:'रिटर्न',
+      orders: ' और ऑर्डर',
       apply: 'लागू करें',
       selectLanguage: 'भाषा चुनें',
       // add more translations
@@ -36,7 +37,8 @@ kn: {
     cart: 'ಕಾರ್ಟ್',
     signin: 'ಹಲೋ, ಸೈನ್ ಇನ್ ಮಾಡಿ',
     account: 'ಖಾತೆ ಮತ್ತು ಪಟ್ಟಿ',
-    orders: 'ರಿಟರ್ನ್ ಮತ್ತು ಆರ್ಡರ್‌ಗಳು',
+    returns:'ರಿಟರ್ನ್',
+    orders: ' ಮತ್ತು ಆರ್ಡರ್‌ಗಳು',
     apply: 'ಅನ್ವಯಿಸಿ',
     selectLanguage: 'ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ',
   }

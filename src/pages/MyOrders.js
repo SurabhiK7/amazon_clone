@@ -53,7 +53,13 @@ function MyOrders() {
                   data-bs-toggle="collapse"
                   data-bs-target={`#collapse${index}`}
                 >
-                  Order #{order.id} - {new Date(order.date).toLocaleString()}
+                  Order #{order.id} - {new Date(order.date).toLocaleString('en-IN', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit',
+})}
                 </button>
               </h2>
               <div
