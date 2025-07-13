@@ -1,5 +1,5 @@
 .modal-backdrop {
-  z-index: 1040 !important; /* Bootstrap standard */
+  z-index: 1040 !important; 
 }
 .location-modal-overlay {
   position: fixed;
@@ -13,7 +13,6 @@
   justify-content: center;
   align-items: center;
 }
-
 .location-modal {
   background: #fff;
   padding: 24px;
@@ -23,7 +22,6 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   font-family: Arial, sans-serif;
 }
-
 .close-button {
   position: absolute;
   right: 16px;
@@ -33,18 +31,15 @@
   font-size: 20px;
   cursor: pointer;
 }
-
 .location-modal h2 {
   font-size: 20px;
   margin-bottom: 10px;
 }
-
 .location-modal p {
   font-size: 14px;
   color: #333;
   margin-bottom: 16px;
 }
-
 .sign-in-btn {
   background-color: #ffd814;
   font-weight: bold;
@@ -56,7 +51,6 @@
   cursor: pointer;
   margin-bottom: 16px;
 }
-
 .divider {
   text-align: center;
   color: #555;
@@ -64,7 +58,6 @@
   position: relative;
   margin-bottom: 16px;
 }
-
 .divider::before,
 .divider::after {
   content: '';
@@ -80,12 +73,10 @@
 .divider::after {
   right: 0;
 }
-
 .pincode-input-group {
   display: flex;
   gap: 8px;
 }
-
 .pincode-input-group input {
   flex: 1;
   padding: 10px;
@@ -93,7 +84,6 @@
   border-radius: 6px;
   font-size: 14px;
 }
-
 .apply-btn {
   background-color: #f0c14b;
   border: 1px solid #a88734;

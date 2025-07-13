@@ -43,16 +43,13 @@ function Navbar() {
     selectedCategory, setSelectedCategory,
     maxPrice, setMaxPrice
   } = useSearchFilter();
-
   const [showLocationModal, setShowLocationModal] = useState(false);
   const [location, setLocation] = useState(localStorage.getItem('location') || 'Bengaluru 562130');
-
   const handleApplyLocation = (newLocation, username) => {
     setLocation(newLocation);
     localStorage.setItem('location', newLocation);
     if (username) login(username);
   };
-
   const dropdownRef = useRef();
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -63,7 +60,6 @@ function Navbar() {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
-
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
@@ -73,9 +69,7 @@ function Navbar() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
   const categories = [t('All Categories'), ...new Set(products.map(p => p.category))];
-
   return (
     <header className="amazon-header fixed-top">
       <div className="nav-top">

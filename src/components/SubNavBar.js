@@ -5,7 +5,6 @@ import { FaBars } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-
 const menuItems = [
   { key: "primeDayDeals", link: "https://www.amazon.in/primeday?ref_=nav_cs_td_pd_dt_cr" },
   { key: "fresh", link: "https://www.amazon.in/alm/storefront?almBrandId=ctnow&ref_=nav_cs_fresh" },
@@ -24,10 +23,7 @@ const menuItems = [
   { key: "books", link: "https://www.amazon.in/Books/b/?ie=UTF8&node=976389031&ref_=nav_cs_books" },
   { key: "carMotorbike", link: "https://www.amazon.in/Car-Motorbike-Store/b/?ie=UTF8&node=4772060031&ref_=nav_cs_automotive" }
 ];
-
-
 const SubNavBar = () => {
-  
 const { t } = useTranslation();
   return (
     <div className="subnav">
@@ -35,16 +31,13 @@ const { t } = useTranslation();
         <Link to="/" className="subnav-icon">
   <FaBars />{t('Home')}
 </Link>
-
         {menuItems.map((item, index) => (
   <a key={index} href={item.link} className="subnav-link">
     {t(item.key)}
   </a>
 ))}
-
       </div>
     </div>
   );
 };
-
 export default SubNavBar;

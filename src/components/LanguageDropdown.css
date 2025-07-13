@@ -1,4 +1,3 @@
-
 .language-dropdown-menu {
   position: absolute;
   top: 100%;
@@ -13,13 +12,11 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   text-emphasis-color:black;
 }
-
 .language-dropdown-menu li {
   padding: 10px 15px;
   cursor: pointer;
   font-size: 14px;
 }
-
 .language-dropdown-menu li:hover {
   background-color: #f08804;
 }

@@ -5,14 +5,12 @@ import ProductCard from './ProductCard';
 
 function ProductList() {
   const { searchTerm, selectedCategory, maxPrice } = useSearchFilter();
-
   const filteredProducts = products.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === 'All Categories' || product.category === selectedCategory;
     const matchesPrice = product.price <= maxPrice;
     return matchesSearch && matchesCategory && matchesPrice;
   });
-
   return (
     <div className="row">
       {filteredProducts
@@ -22,9 +20,7 @@ function ProductList() {
       <ProductCard product={product} />
     </div>
 ))}
-
     </div>
   );
 }
-
 export default ProductList;

@@ -16,7 +16,6 @@ import { CartProvider } from './context/CartContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { OrderProvider } from './context/OrderContext';
 
-
 function App() {
   return (
     <Router>
@@ -43,5 +42,4 @@ function App() {
     </Router>
   );
 }
-
 export default App;

@@ -15,7 +15,6 @@ function ProductDetail() {
     const savedRatings = JSON.parse(localStorage.getItem(`ratings-${id}`)) || [];
     setRatings(savedRatings);
   }, [id]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const newRatings = [...ratings, parseInt(userRating)];
@@ -24,13 +23,9 @@ function ProductDetail() {
     setSubmitted(true);
     setUserRating('');
   };
-
   const avgRating = ratings.length ? (ratings.reduce((a, b) => a + b, 0) / ratings.length) : 0;
-
   const renderStars = (rating) => '★'.repeat(Math.round(rating)) + '☆'.repeat(5 - Math.round(rating));
-
   if (!product) return <div className="container">Product not found.</div>;
-
   return (
     <div className="container mt-4">
       <h2>{product.title}</h2>
@@ -38,11 +33,9 @@ function ProductDetail() {
       <p>{product.description}</p>
       <h4>₹{product.price}</h4>
       <button className="btn btn-success mb-3" onClick={() => addToCart(product)}>Add to Cart</button>
-      
       <div>
         <h5>Rating</h5>
         <p className="text-warning fs-4">{renderStars(avgRating)} ({avgRating.toFixed(1)})</p>
-
         <h5 className="mt-4">Rate this product</h5>
         <form onSubmit={handleSubmit}>
           <select className="form-select w-auto" value={userRating} onChange={(e) => setUserRating(e.target.value)} required>
@@ -58,5 +51,4 @@ function ProductDetail() {
     </div>
   );
 }
-
 export default ProductDetail;

@@ -1,6 +1,5 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-
 function BannerCarousel() {
   return (
     <Carousel>
@@ -16,5 +15,4 @@ function BannerCarousel() {
     </Carousel>
   );
 }
-
 export default BannerCarousel;

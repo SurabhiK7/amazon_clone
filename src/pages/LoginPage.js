@@ -6,13 +6,11 @@ function LoginPage() {
   const { login } = useContext(AuthContext);
   const [username, setUsername] = useState('');
   const navigate = useNavigate();
-
   const handleLogin = (e) => {
     e.preventDefault();
     login(username);
     navigate('/');
   };
-
   return (
     <div className="container mt-5">
       <h2>Login</h2>
@@ -26,5 +24,4 @@ function LoginPage() {
     </div>
   );
 }
-
 export default LoginPage;

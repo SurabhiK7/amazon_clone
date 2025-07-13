@@ -5,9 +5,7 @@ import { useNavigate } from 'react-router-dom';
 function CartPage() {
   const { cartItems, removeFromCart, updateQuantity } = useContext(CartContext);
   const navigate = useNavigate();
-
   const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
-
   return (
     <div className="container mt-4">
       <h2>Your Cart</h2>
@@ -38,5 +36,4 @@ function CartPage() {
     </div>
   );
 }
-
 export default CartPage;

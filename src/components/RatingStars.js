@@ -11,5 +11,4 @@ function RatingStars({ rating }) {
     </div>
   );
 }
-
 export default RatingStars;

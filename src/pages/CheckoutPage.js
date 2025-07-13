@@ -7,9 +7,7 @@ function CheckoutPage() {
   const { cartItems, clearCart } = useContext(CartContext);
   const { placeOrder } = useContext(OrderContext);
   const navigate = useNavigate();
-
   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
-
   const handleCheckout = () => {
     const newOrder = {
       id: Date.now(),
@@ -21,7 +19,6 @@ function CheckoutPage() {
     clearCart();
     navigate('/success');
   };
-
   return (
     <div className="container mt-4">
       <h2>Checkout Summary</h2>
@@ -43,5 +40,4 @@ function CheckoutPage() {
     </div>
   );
 }
-
 export default CheckoutPage;

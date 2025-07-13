@@ -1,15 +1,12 @@
 import React from 'react';
-import i18n from '../i18n'; // import the configured i18n instance
+import i18n from '../i18n';
 import './LanguageDropdown.css'
 const LanguageDropdown = ({ show }) => {
-  if (!show) return null; // hide dropdown if not toggled
-
-  // Change language and persist selection
+  if (!show) return null; 
   const changeLanguage = (lang) => {
     i18n.changeLanguage(lang);
-    localStorage.setItem('language', lang); // Save selected language
+    localStorage.setItem('language', lang); 
   };
-
   return (
     <ul className="language-dropdown-menu">
       <li onClick={() => changeLanguage('en')}>English</li>
@@ -18,5 +15,4 @@ const LanguageDropdown = ({ show }) => {
     </ul>
   );
 };
-
 export default LanguageDropdown;

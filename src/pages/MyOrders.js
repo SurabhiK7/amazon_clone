@@ -5,14 +5,12 @@ import { AuthContext } from '../context/AuthContext';
 function MyOrders() {
   const { orders, setOrders } = useContext(OrderContext);
   const { user } = useContext(AuthContext);
-
   const handleDeleteOrders = () => {
     const isConfirmed = window.confirm(
       user?.username
         ? "Are you sure you want to delete your order history?"
         : "No user is signed in. This will delete ALL order history. Continue?"
     );
-
     if (isConfirmed) {
       if (user?.username) {
         const filtered = orders.filter(order => order.username !== user.username);
@@ -24,11 +22,9 @@ function MyOrders() {
       }
     }
   };
-
   const visibleOrders = user
     ? orders.filter(order => order.username === user.username)
     : orders;
-
   return (
     <div className="container mt-4">
       <h2 className="mb-4 d-flex justify-content-between align-items-center">
@@ -39,7 +35,6 @@ function MyOrders() {
           </button>
         )}
       </h2>
-
       {visibleOrders.length === 0 ? (
         <p>No past orders found.</p>
       ) : (
@@ -54,12 +49,12 @@ function MyOrders() {
                   data-bs-target={`#collapse${index}`}
                 >
                   Order #{order.id} - {new Date(order.date).toLocaleString('en-IN', {
-  day: 'numeric',
-  month: 'short',
-  year: 'numeric',
-  hour: '2-digit',
-  minute: '2-digit',
-})}
+                                        day: 'numeric',
+                                        month: 'short',
+                                        year: 'numeric',
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                      })}
                 </button>
               </h2>
               <div
@@ -107,5 +102,4 @@ function MyOrders() {
     </div>
   );
 }
-
 export default MyOrders;

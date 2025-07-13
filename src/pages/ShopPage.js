@@ -5,11 +5,9 @@ import ProductCard from '../components/ProductCard';
 
 function ShopPage() {
   const { selectedCategory } = useSearchFilter();
-
   const filteredProducts = selectedCategory === 'All Categories'
     ? products
     : products.filter(product => product.category === selectedCategory);
-
   return (
     <div className="container mt-4">
       <h4>{selectedCategory} Products</h4>
@@ -27,5 +25,4 @@ function ShopPage() {
     </div>
   );
 }
-
 export default ShopPage;

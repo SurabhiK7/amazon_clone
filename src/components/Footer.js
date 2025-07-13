@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './Footer.css';
 import { FaInstagram, FaLinkedin, FaTwitter, FaFacebook, FaArrowUp } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
-
 function Footer() {
   const { t } = useTranslation();
   const [showButton, setShowButton] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       setShowButton(window.scrollY > 300);
@@ -14,11 +12,9 @@ function Footer() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
   return (
     <>
       {showButton && (
@@ -26,7 +22,6 @@ function Footer() {
           <FaArrowUp />
         </button>
       )}
-
       <footer className="site-footer">
         <div className="footer-container">
           <div className="footer-section about">
@@ -37,7 +32,6 @@ function Footer() {
               {t("departmentFull")}
             </p>
           </div>
-
           <div className="footer-section links">
             <h3>{t("connectWithUs")}</h3>
             <ul>
@@ -53,7 +47,6 @@ function Footer() {
               <FaFacebook />
             </div>
           </div>
-
           <div className="footer-section contact">
             <h3>{t("contact")}</h3>
             <p>{t("Surabhi")}</p>
@@ -69,5 +62,4 @@ function Footer() {
     </>
   );
 }
-
 export default Footer;
