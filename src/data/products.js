@@ -102,7 +102,7 @@ const products = [
     title: 'Cubiker Engineered Wood Multipurpose Foldable Laptop Table with Cup Holder ',
     description: 'Cubiker Engineered Wood Multipurpose Foldable Laptop Table with Cup Holder | Table Home Study Writing Table, Foldable and Portable/Ergonomic Edges (Black - 60[L] X 40[W] X 24[H] Cm)',
     price: 448,
-    category:'Home',
+    category:'Home_Decor',
     image: TableImg,
     rating: 4
   },
@@ -112,7 +112,7 @@ const products = [
     title: 'Desidiya 12 Stars 138 Led Curtain String Lights Window Curtain Lights with 8 Flashing Modes',
     description: 'Desidiya 12 Stars 138 Led Curtain String Lights Window Curtain Lights with 8 Flashing Modes Decoration for Christmas, Wedding, Party, Home, Patio Lawn Warm White (138 Led-Star, Copper, Pack of 1)',
     price: 458,
-    category:'Home',
+    category:'Home_Decor',
     image: LightsImg,
     rating: 4.2
   },
@@ -122,7 +122,7 @@ const products = [
     title: 'TrustBasket Marvel Matka Small Clay Flower Pots',
     description: 'TrustBasket Marvel Matka Small Clay Flower Pots Set of 3 – Pink Terracotta Clay Flower Pot with Saucer Plate | Handmade Pots | Mud Plant Container | Gamla for Plants | Indoor Outdoor Use',
     price: 1399,
-    category:'Home',
+    category:'Home_Decor',
     image: FlowerPotsImg,
     rating: 4.8
   },
@@ -132,7 +132,7 @@ const products = [
     title: 'CIDIZY Jute Floral Print Cushion Covers, 16 X 16 Inch, Set Of 7, Multicolor, 200 tc',
     description: 'Size: 16 x 16 Inch / 40x40 cm and Fabric: Premium Jute (Front) & Dupion Silk (Back) Traditional Designer Decorative Flower Floral Tree Digital Printed Sofa Cushion Cover 16x16 Set of 7',
     price: 471,
-    category:'Home',
+    category:'Home_Decor',
     image: CushionCoverImg,
     rating: 4.2
   },

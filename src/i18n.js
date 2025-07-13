@@ -27,6 +27,7 @@ const resources = {
       orders: ' और ऑर्डर',
       apply: 'लागू करें',
       selectLanguage: 'भाषा चुनें',
+      Delivering:'डिलीवरी स्थान'
       // add more translations
     }
   },

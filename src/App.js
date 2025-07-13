@@ -10,7 +10,7 @@ import ProductDetail from './pages/ProductDetail';
 import CheckoutPage from './pages/CheckoutPage';
 import OrderSuccessPage from './pages/OrderSuccessPage';
 import MyOrders from './pages/MyOrders';
-
+import ShopPage from './pages/ShopPage';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { ThemeProvider } from './context/ThemeContext';
@@ -34,6 +34,7 @@ function App() {
                 <Route path="/checkout" element={<CheckoutPage />} />
                 <Route path="/success" element={<OrderSuccessPage />} />
                 <Route path="/orders" element={<MyOrders />} />
+                <Route path="/shop" element={<ShopPage />} />
               </Routes>
             </OrderProvider>
           </ThemeProvider>

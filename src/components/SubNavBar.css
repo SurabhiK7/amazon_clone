@@ -1,8 +1,13 @@
 .subnav {
   background-color: #232f3e;
-  padding: 10px 20px;
+  color: white;
   overflow-x: auto;
   white-space: nowrap;
+  padding: 10px 15px;
+  z-index: 900;
+  position: sticky;
+  top: 60px; /* adjust to match height of Navbar */
+  
 }
 
 .subnav-container {

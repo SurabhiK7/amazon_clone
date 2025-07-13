@@ -90,7 +90,7 @@ function Navbar() {
           <div className="location-block">
             <img src={locationIcon} className="location-icon" alt="location" />
             <div className="location-text">
-              <span className="small-text">{t('Delivering to')}</span>
+              <span className="small-text">{t("Delivering_to")}</span>
               <span className="update-location">{location}</span>
             </div>
           </div>
@@ -120,7 +120,7 @@ function Navbar() {
 
           <div className="price-filter">
             <label htmlFor="priceRange" className="form-label">
-              {t('Max Price')}: ₹{maxPrice}
+              {t('Max_Price')}: ₹{maxPrice}
             </label>
             <input
               type="range"
