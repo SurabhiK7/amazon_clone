@@ -260,9 +260,9 @@ body.dark .modal-content {
 .nav-content.open {
   display: flex;
     position: absolute;
-  top: 0;
+  top: 60px;
   left: 0;
-  z-index: 999;
+  z-index:2000;
   background-color: #131921;
   width: 100%;
   display: flex;
@@ -279,7 +279,7 @@ body.dark .modal-content {
   width: 100vw;
   height: calc(100vh - 60px);
   background-color: rgba(0, 0, 0, 0.4);
-  z-index: 1500;
+  z-index: 1000;
 }
 
 
@@ -297,13 +297,6 @@ body.dark .modal-content {
   cursor: pointer;
 }
 
-/* Desktop override */
-@media (min-width: 768px) {
-  body {
-  padding-top: 100px; /* match header height */
-  overflow-x: hidden;
-}
-}
 @media (min-width: 768px) {
   .nav-content {
     display: flex !important;
