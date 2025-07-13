@@ -113,9 +113,9 @@ function Navbar() {
               className="form-control"
               placeholder={t('search')}
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => setSearchTerm(e.target.value) &&setMenuOpen(false)}
             />
-            <button><FaSearch /></button>
+            <button onClick={() => setMenuOpen(false)}><FaSearch /></button>
           </div><br /><br />
 
           <div className="price-filter">
@@ -130,7 +130,7 @@ function Navbar() {
               max="50000"
               step="100"
               value={maxPrice}
-              onChange={(e) => setMaxPrice(Number(e.target.value))}
+              onChange={(e) => setMaxPrice(Number(e.target.value))&&setMenuOpen(false) }
             />
           </div>
 
@@ -170,12 +170,12 @@ function Navbar() {
             )}
           </div>
 
-          <Link to="/orders" className="nav-option">
+          <Link to="/orders" className="nav-option" onClick={() => setMenuOpen(false)}>
             <span>{t('returns')}</span>
             <strong>{t('orders')}</strong>
           </Link>
 
-          <Link to="/cart" className="cart position-relative">
+          <Link to="/cart" className="cart position-relative" onClick={() => setMenuOpen(false)}>
             <FaShoppingCart />
             <span>{t('cart')}</span>
             {cartCount > 0 && (
